@@ -1,13 +1,11 @@
 'use strict';
 
 const debug = require('debug')('hello');
-
 const fs = require('fs');
 const parse = require('csv-parse');
 const helper = require('./helper');
 
 // 0. Naïve
-
 function naive() {
     fs.readFile(__dirname + '/sample.csv', function thenParse(err, loadedCsv) {
 
@@ -18,6 +16,7 @@ function naive() {
                 let line = parsed[index];
 
                 // FIXME: Put your transformation here
+                line.push(line[0].concat(' ',line[1]));
 
                 if (index > 0) {
                     debug(`sending data index: ${index - 1}`);
